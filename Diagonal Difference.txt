@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Complete the diagonalDifference function below.
+int diagonalDifference(vector<vector<int>> arr) {
+int i, j, ld=0, rd=0, res;
+for(i=0; i<arr.size(); i++)
+    for(j=0; j<arr.size(); j++){
+        if(i==j) ld+=arr[i][j];
+        if(i+j == arr.size()-1) rd+=arr[i][j];
+    }
+res = abs(ld-rd);
+return res;
+
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    int n;
+    cin >> n;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    vector<vector<int>> arr(n);
+    for (int i = 0; i < n; i++) {
+        arr[i].resize(n);
+
+        for (int j = 0; j < n; j++) {
+            cin >> arr[i][j];
+        }
+
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    int result = diagonalDifference(arr);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
